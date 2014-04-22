@@ -8,7 +8,7 @@ Usage:
 
     write_object(ob, 'file_or_directory_name')
 
-Tested with Zope 2.12 on Python 2.5.
+Tested with Zope 2.14 on Python 2.7.
 
 Copyright (c) 2010 Marius Gedminas <marius@pov.lt>
 
@@ -58,7 +58,11 @@ def class_name(cls):
 def write_object(ob, filename):
     for priority, condition, handler in writer_registry:
         if condition(ob):
-            handler(ob, filename)
+            try:
+                handler(ob, filename)
+            except:
+                warn("failed to write %s (%s)" % (filename, class_name(ob.__class__)))
+                raise
             break
     else:
         warn("skipping %s (%s)" % (filename, class_name(ob.__class__)))
