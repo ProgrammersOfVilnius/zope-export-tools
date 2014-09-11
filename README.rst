@@ -73,13 +73,13 @@ Export--modify--import loses all ZODB undo history, obviously.
 Supported object types
 ----------------------
 
-Currently only these objects are supported:
+Currently only these object types are supported:
 
-  * File
-  * Image
-  * Python Script
-  * Zope Page Template
-  * Folder
+* File
+* Image
+* Python Script
+* Zope Page Template
+* Folder
 
 
 Author
